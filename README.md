@@ -20,11 +20,11 @@ Ce site est hébergé sur GitHub Pages.
    git commit -m "Initial commit"
    ```
 
-2. Créer un dépôt sur GitHub nommé `vylinkia-website`.
+2. Créer un dépôt sur GitHub nommé `vylinkia-invest-website`.
 
 3. Lier le dépôt local au dépôt distant :
    ```bash
-   git remote add origin https://github.com/VOTRE_USERNAME/vylinkia-website.git
+   git remote add origin https://github.com/VOTRE_USERNAME/vylinkia-invest-website.git
    git branch -M main
    git push -u origin main
    ```

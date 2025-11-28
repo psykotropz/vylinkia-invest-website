@@ -84,7 +84,8 @@
                 <span class="gradient-text">Vylinkia Vision</span>
             </h1>
             <p class="text-xl text-slate-400 mb-8">
-                Receive AI-based buy and sell signals for the best European and American stocks. Simple, clear,
+                Receive AI-based buy and sell signals for the best European and American stocks.
+                Simple, clear,
                 effective.
             </p>
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
@@ -106,10 +107,14 @@
                 <div
                     class="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute z-10">
                 </div>
-                <div class="h-[32px] w-[3px] bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg"></div>
-                <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
-                <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
-                <div class="h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
+                <div class="h-[32px] w-[3px] bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg">
+                </div>
+                <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg">
+                </div>
+                <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg">
+                </div>
+                <div class="h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg">
+                </div>
                 <div class="rounded-[2rem] overflow-hidden w-full h-full bg-slate-700">
                     <img src="../assets/images/app_preview.png" alt="Vylinkia Invest App Screenshot"
                         class="w-full h-full object-cover">
@@ -159,213 +164,31 @@
                 </div>
                 <p class="mt-8 text-xs max-w-2xl mx-auto">
                     Disclaimer: Trading involves risks. Past performance is not indicative of future
-                    <!DOCTYPE html>
-                    <html lang="en">
+                    results. Vylinkia Invest is
+                    not a financial advisor.
+                </p>
+            </div>
+        </footer>
 
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Vylinkia Invest - AI-Powered Savings</title>
-                        <meta name="description"
-                            content="AI-driven trading signals and automated analysis for the modern investor. Stocks, ETFs, Crypto.">
-                        <meta name="keywords"
-                            content="trading, investment, AI, signals, stock market, stocks, ETF, crypto, finance, savings">
-                        <meta name="author" content="Vylinkia Invest">
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
 
-                        <!-- Open Graph / Facebook -->
-                        <meta property="og:type" content="website">
-                        <meta property="og:url" content="https://vylinkiainvest.com/en/">
-                        <meta property="og:title" content="Vylinkia Invest - AI-Powered Savings">
-                        <meta property="og:description"
-                            content="AI-driven trading signals and automated analysis for the modern investor. Stocks, ETFs, Crypto.">
-                        <meta property="og:image" content="https://vylinkiainvest.com/assets/images/app_preview.png">
+                // Simple obfuscation
+                const user = 'contact';
+                const domain = 'vylinkia-invest.com';
+                const address = user + '@' + domain;
 
-                        <!-- Twitter -->
-                        <meta property="twitter:card" content="summary_large_image">
-                        <meta property="twitter:url" content="https://vylinkiainvest.com/en/">
-                        <meta property="twitter:title" content="Vylinkia Invest - AI-Powered Savings">
-                        <meta property="twitter:description"
-                            content="AI-driven trading signals and automated analysis for the modern investor. Stocks, ETFs, Crypto.">
-                        <meta property="twitter:image"
-                            content="https://vylinkiainvest.com/assets/images/app_preview.png">
+                const subject = encodeURIComponent('Contact from Vylinkia Invest website');
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
 
-                        <!-- Favicon -->
-                        <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+                window.location.href = `mailto:${address}?subject=${subject}&body=${body}`;
+            });
+        </script>
 
-                        <script src="https://cdn.tailwindcss.com"></script>
-                        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-                            rel="stylesheet">
-                        <style>
-                            body {
-                                font-family: 'Inter', sans-serif;
-                            }
+</body>
 
-                            .gradient-text {
-                                background: linear-gradient(to right, #4ade80, #3b82f6);
-                                background-clip: text;
-                                -webkit-background-clip: text;
-                                -webkit-text-fill-color: transparent;
-                            }
-                        </style>
-                    </head>
-
-                    <body class="bg-slate-900 text-white">
-
-                        <!-- Navbar -->
-                        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-2xl font-bold tracking-tight">Vylinkia<span
-                                        class="text-green-400">Invest</span></span>
-                            </div>
-                            <div class="hidden md:flex space-x-8 items-center">
-                                <a href="#features" class="hover:text-green-400 transition">Features</a>
-                                <a href="#pricing" class="hover:text-green-400 transition">Pricing</a>
-                                <a href="#contact" class="hover:text-green-400 transition">Contact</a>
-
-                                <!-- Language Switcher -->
-                                <div class="flex space-x-3 border-l border-slate-700 pl-6">
-                                    <a href="../index.html"
-                                        class="hover:scale-110 transition opacity-50 hover:opacity-100"
-                                        title="Français">🇫🇷</a>
-                                    <a href="#" class="hover:scale-110 transition" title="English">🇬🇧</a>
-                                    <a href="../es/index.html"
-                                        class="hover:scale-110 transition opacity-50 hover:opacity-100"
-                                        title="Español">🇪🇸</a>
-                                    <a href="../de/index.html"
-                                        class="hover:scale-110 transition opacity-50 hover:opacity-100"
-                                        title="Deutsch">🇩🇪</a>
-                                    <a href="../it/index.html"
-                                        class="hover:scale-110 transition opacity-50 hover:opacity-100"
-                                        title="Italiano">🇮🇹</a>
-                                </div>
-                            </div>
-                            <a href="#"
-                                class="bg-green-500 hover:bg-green-600 text-slate-900 font-bold py-2 px-6 rounded-full transition">
-                                Download
-                            </a>
-                        </nav>
-
-                        <!-- Hero Section -->
-                        <header
-                            class="container mx-auto px-6 py-20 text-center md:text-left flex flex-col md:flex-row items-center">
-                            <div class="md:w-1/2">
-                                <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
-                                    Invest with the <br>
-                                    <span class="gradient-text">Vylinkia Vision</span>
-                                </h1>
-                                <p class="text-xl text-slate-400 mb-8">
-                                    Receive AI-based buy and sell signals for the best European and American stocks.
-                                    Simple, clear,
-                                    effective.
-                                </p>
-                                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                                    <a href="#"
-                                        class="bg-white text-slate-900 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition text-center">
-                                        Start Free Trial
-                                    </a>
-                                    <a href="#features"
-                                        class="border border-slate-600 text-white font-bold py-3 px-8 rounded-full hover:bg-slate-800 transition text-center">
-                                        Learn More
-                                    </a>
-                                </div>
-                                <p class="mt-4 text-sm text-slate-500">Available on Android. Coming soon to iOS.</p>
-                            </div>
-                            <div class="md:w-1/2 mt-12 md:mt-0 relative">
-                                <!-- App Screenshot -->
-                                <div
-                                    class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl overflow-hidden">
-                                    <div
-                                        class="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute z-10">
-                                    </div>
-                                    <div
-                                        class="h-[32px] w-[3px] bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg">
-                                    </div>
-                                    <div
-                                        class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg">
-                                    </div>
-                                    <div
-                                        class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg">
-                                    </div>
-                                    <div
-                                        class="h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg">
-                                    </div>
-                                    <div class="rounded-[2rem] overflow-hidden w-full h-full bg-slate-700">
-                                        <img src="../assets/images/app_preview.png" alt="Vylinkia Invest App Screenshot"
-                                            class="w-full h-full object-cover">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container mx-auto px-6 max-w-2xl">
-                                <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
-                                <p class="text-center text-slate-400 mb-12">A question? A suggestion? Don't hesitate to
-                                    write to us.</p>
-
-                                <form id="contactForm" class="space-y-6">
-                                    <div>
-                                        <label for="name"
-                                            class="block text-sm font-medium text-slate-300 mb-2">Name</label>
-                                        <input type="text" id="name" name="name"
-                                            class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-green-500 transition"
-                                            placeholder="Your name" required>
-                                    </div>
-                                    <div>
-                                        <label for="email"
-                                            class="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                                        <input type="email" id="email" name="email"
-                                            class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-green-500 transition"
-                                            placeholder="your@email.com" required>
-                                    </div>
-                                    <div>
-                                        <label for="message"
-                                            class="block text-sm font-medium text-slate-300 mb-2">Message</label>
-                                        <textarea id="message" name="message" rows="4"
-                                            class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-green-500 transition"
-                                            placeholder="Your message..." required></textarea>
-                                    </div>
-                                    <button type="submit"
-                                        class="w-full bg-green-500 hover:bg-green-600 text-slate-900 font-bold py-4 rounded-xl transition">
-                                        Send Message
-                                    </button>
-                                </form>
-                            </div>
-                            </section>
-
-                            <!-- Footer -->
-                            <footer class="bg-slate-900 border-t border-slate-800 py-12">
-                                <div class="container mx-auto px-6 text-center text-slate-500">
-                                    <p class="mb-4">&copy; 2025 Vylinkia Invest. All rights reserved.</p>
-                                    <div class="space-x-4 text-sm">
-                                        <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
-                                        <a href="terms.html" class="hover:text-white transition">Terms of Use</a>
-                                        <a href="#contact" class="hover:text-white transition">Contact</a>
-                                    </div>
-                                    <p class="mt-8 text-xs max-w-2xl mx-auto">
-                                        Disclaimer: Trading involves risks. Past performance is not indicative of future
-                                        results. Vylinkia Invest is
-                                        not a financial advisor.
-                                    </p>
-                                </div>
-                            </footer>
-
-                            <script>
-                                document.getElementById('contactForm').addEventListener('submit', function (e) {
-                                    e.preventDefault();
-                                    const name = document.getElementById('name').value;
-                                    const email = document.getElementById('email').value;
-                                    const message = document.getElementById('message').value;
-
-                                    // Simple obfuscation
-                                    const user = 'contact';
-                                    const domain = 'vylinkia-invest.com';
-                                    const address = user + '@' + domain;
-
-                                    const subject = encodeURIComponent('Contact from Vylinkia Invest website');
-                                    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-
-                                    window.location.href = `mailto:${address}?subject=${subject}&body=${body}`;
-                                });
-                            </script>
-
-                    </body>
-
-                    </html>
+</html>

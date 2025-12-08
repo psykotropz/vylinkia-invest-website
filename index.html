@@ -88,9 +88,16 @@
                 <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
                 <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
                 <div class="h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
-                <div class="rounded-[2rem] overflow-hidden w-full h-full bg-slate-700">
-                    <img src="assets/images/app_preview.png" alt="Vylinkia Invest App Screenshot"
-                        class="w-full h-full object-cover">
+                <div class="rounded-[2rem] overflow-hidden w-full h-full bg-slate-700 relative">
+                    <!-- Carousel Slides -->
+                    <img src="assets/images/carousel_1.png" alt="App Screen 1"
+                        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-100 carousel-slide">
+                    <img src="assets/images/carousel_2.png" alt="App Screen 2"
+                        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0 carousel-slide">
+                    <img src="assets/images/carousel_3.png" alt="App Screen 3"
+                        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0 carousel-slide">
+                    <img src="assets/images/carousel_4.png" alt="App Screen 4"
+                        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0 carousel-slide">
                 </div>
             </div>
         </div>
@@ -433,6 +440,25 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.carousel-slide');
+            let currentSlide = 0;
+
+            // Start the carousel loop
+            setInterval(() => {
+                // Fade out current slide
+                slides[currentSlide].classList.remove('opacity-100');
+                slides[currentSlide].classList.add('opacity-0');
+
+                // Move to next slide index (loop back to 0)
+                currentSlide = (currentSlide + 1) % slides.length;
+
+                // Fade in next slide
+                slides[currentSlide].classList.remove('opacity-0');
+                slides[currentSlide].classList.add('opacity-100');
+            }, 2000); // 2000ms = 2 seconds
+        });
+
         document.getElementById('contactForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 

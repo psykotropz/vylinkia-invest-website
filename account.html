@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Compte - Vylinkia Invest</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <a href="index.html" class="text-2xl font-bold tracking-tight">Vylinkia<span
+                    class="text-green-400">Invest</span></a>
+        </div>
+        <div>
+            <a href="index.html" class="text-slate-400 hover:text-white transition">Retour à l'accueil</a>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mx-auto px-6 flex-grow flex items-center justify-center">
+        <div class="max-w-md w-full bg-slate-800 rounded-2xl p-8 border border-slate-700 shadow-xl" id="loginContainer">
+            <h1 class="text-2xl font-bold text-center mb-6">Mon Compte</h1>
+            <p class="text-slate-400 text-center mb-8">Connectez-vous pour gérer votre abonnement.</p>
+
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                    <input type="email" id="email"
+                        class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-green-500 outline-none"
+                        required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Mot de passe</label>
+                    <input type="password" id="password"
+                        class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-green-500 outline-none"
+                        required>
+                </div>
+                <button type="submit"
+                    class="w-full bg-green-500 hover:bg-green-600 text-slate-900 font-bold py-3 rounded-xl transition">
+                    Se connecter
+                </button>
+            </form>
+            <div id="errorMessage" class="text-red-400 text-center mt-4 hidden"></div>
+        </div>
+
+        <div class="max-w-md w-full bg-slate-800 rounded-2xl p-8 border border-slate-700 shadow-xl hidden"
+            id="portalContainer">
+            <h1 class="text-2xl font-bold text-center mb-6">Bonjour !</h1>
+            <p class="text-slate-400 text-center mb-8">Gérez votre abonnement, vos factures et vos moyens de paiement.
+            </p>
+
+            <button id="portalButton"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition flex items-center justify-center">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
+                    </path>
+                </svg>
+                Ouvrir le Portail Client
+            </button>
+            <button id="logoutButton"
+                class="w-full bg-transparent border border-slate-600 text-slate-400 hover:text-white mt-4 py-3 rounded-xl transition">
+                Se déconnecter
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // TODO: Replace with your actual Firebase Config
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "SENDER_ID",
+            appId: "APP_ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const API_URL = "https://tyto-production.up.railway.app"; // Update if needed
+
+        const loginForm = document.getElementById('loginForm');
+        const loginContainer = document.getElementById('loginContainer');
+        const portalContainer = document.getElementById('portalContainer');
+        const portalButton = document.getElementById('portalButton');
+        const logoutButton = document.getElementById('logoutButton');
+        const errorMessage = document.getElementById('errorMessage');
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginContainer.classList.add('hidden');
+                portalContainer.classList.remove('hidden');
+            } else {
+                loginContainer.classList.remove('hidden');
+                portalContainer.classList.add('hidden');
+            }
+        });
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMessage.classList.add('hidden');
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                errorMessage.innerText = "Erreur de connexion : " + error.message;
+                errorMessage.classList.remove('hidden');
+            }
+        });
+
+        portalButton.addEventListener('click', async () => {
+            const user = auth.currentUser;
+            if (!user) return;
+
+            portalButton.innerText = "Chargement...";
+            portalButton.disabled = true;
+
+            try {
+                const token = await user.getIdToken();
+                const response = await fetch(`${API_URL}/stripe/create-portal-session`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.portalUrl) {
+                        window.location.href = data.portalUrl;
+                    } else {
+                        throw new Error("Pas d'URL de portail reçue");
+                    }
+                } else {
+                    const err = await response.json();
+                    throw new Error(err.detail || "Erreur serveur");
+                }
+            } catch (error) {
+                alert("Erreur: " + error.message);
+                portalButton.innerText = "Ouvrir le Portail Client";
+                portalButton.disabled = false;
+            }
+        });
+
+        logoutButton.addEventListener('click', () => {
+            signOut(auth);
+        });
+    </script>
+</body>
+
+</html>

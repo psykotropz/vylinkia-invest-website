@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-        <!-- Google Analytics 4 - Conditional Loading -->
+    <!-- Google Analytics 4 - Conditional Loading -->
     <script>
         // Check if user has consented to cookies
         function loadGoogleAnalytics() {
@@ -41,7 +41,7 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-    
+
         /* Cookie Consent Banner */
         #cookieConsent {
             position: fixed;
@@ -79,20 +79,25 @@
             <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
                     <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+                        </path>
                     </svg>
                     <h3 class="font-bold text-lg">🍪 Gestion des cookies</h3>
                 </div>
                 <p class="text-sm text-slate-300">
-                    Nous utilisons des cookies pour améliorer votre expérience et analyser notre trafic avec Google Analytics. 
+                    Nous utilisons des cookies pour améliorer votre expérience et analyser notre trafic avec Google
+                    Analytics.
                     <a href="privacy.html" class="text-green-400 hover:underline">En savoir plus</a>
                 </p>
             </div>
             <div class="cookie-buttons flex gap-3">
-                <button onclick="declineCookies()" class="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-medium">
+                <button onclick="declineCookies()"
+                    class="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-medium">
                     Refuser
                 </button>
-                <button onclick="acceptCookies()" class="px-6 py-2 bg-green-500 hover:bg-green-600 text-slate-900 rounded-lg font-bold">
+                <button onclick="acceptCookies()"
+                    class="px-6 py-2 bg-green-500 hover:bg-green-600 text-slate-900 rounded-lg font-bold">
                     Accepter
                 </button>
             </div>
@@ -165,14 +170,14 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-        // TODO: Replace with your actual Firebase Config
+        // Firebase Configuration for Tyto Invest
         const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "SENDER_ID",
-            appId: "APP_ID"
+            apiKey: "AIzaSyDaTzujAxldv27ZuJizivCtl_11Rkj27aw",
+            authDomain: "tyto-invest.firebaseapp.com",
+            projectId: "tyto-invest",
+            storageBucket: "tyto-invest.firebasestorage.app",
+            messagingSenderId: "73261855150",
+            appId: "1:73261855150:android:6f56e51be3081fa03e183f"
         };
 
         const app = initializeApp(firebaseConfig);

@@ -161,7 +161,13 @@
                         class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-green-500 transition">
                 </div>
                 <div>
-                    <label for="password" class="block text-sm font-medium text-slate-300 mb-2">Passwort</label>
+                    <div class="flex items-center justify-between mb-2">
+                        <label for="password" class="block text-sm font-medium text-slate-300">Mot de passe</label>
+                        <button type="button" id="forgotPasswordLink"
+                            class="text-sm text-green-400 hover:text-green-300 transition">
+                            Mot de passe oublié ?
+                        </button>
+                    </div>
                     <input type="password" id="password" name="password" required
                         class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-green-500 transition">
                 </div>
@@ -458,7 +464,7 @@
     <!-- Scripts -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, updatePassword, EmailAuthProvider, reauthenticateWithCredential, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
         // Firebase Configuration for Tyto Invest
         const firebaseConfig = {
@@ -528,6 +534,40 @@
                         break;
                     default:
                         friendlyMessage = "Verbindungsfehler. Bitte versuchen Sie es erneut";
+                }
+
+                errorMessage.innerText = friendlyMessage;
+                errorMessage.classList.remove('hidden');
+            }
+        });
+
+        // Forgot password
+        const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+        forgotPasswordLink.addEventListener('click', async () => {
+            const email = document.getElementById('email').value;
+
+            if (!email) {
+                errorMessage.innerText = "Veuillez entrer votre adresse email";
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                await sendPasswordResetEmail(auth, email);
+                errorMessage.classList.add('hidden');
+                alert('Un email de réinitialisation a été envoyé à ' + email);
+            } catch (error) {
+                let friendlyMessage = "Erreur lors de l'envoi de l'email";
+
+                switch (error.code) {
+                    case 'auth/invalid-email':
+                        friendlyMessage = "Ungültige E-Mail-Adresse";
+                        break;
+                    case 'auth/user-not-found':
+                        friendlyMessage = "Aucun compte associé à cette adresse email";
+                        break;
+                    default:
+                        friendlyMessage = "Erreur lors de l'envoi. Veuillez réessayer";
                 }
 
                 errorMessage.innerText = friendlyMessage;

@@ -75,6 +75,32 @@
         .gradient-bg {
             background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
         }
+
+        /* Modal styles */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-backdrop.show {
+            opacity: 1;
+        }
+
+        .modal-content {
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-backdrop.show .modal-content {
+            transform: scale(1);
+        }
     </style>
 </head>
 
@@ -359,6 +385,55 @@
         </div>
     </div>
 
+    <!-- Password Change Modal -->
+    <div id="passwordModal" class="modal-backdrop hidden">
+        <div class="modal-content bg-slate-800 rounded-2xl p-8 max-w-md w-full mx-4 border border-slate-700">
+            <h2 class="text-2xl font-bold mb-6">Changer le mot de passe</h2>
+
+            <form id="passwordChangeForm" class="space-y-4">
+                <div>
+                    <label for="currentPassword" class="block text-sm font-medium text-slate-300 mb-2">
+                        Mot de passe actuel
+                    </label>
+                    <input type="password" id="currentPassword" required
+                        class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-green-500 transition">
+                </div>
+
+                <div>
+                    <label for="newPassword" class="block text-sm font-medium text-slate-300 mb-2">
+                        Nouveau mot de passe
+                    </label>
+                    <input type="password" id="newPassword" required minlength="6"
+                        class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-green-500 transition">
+                    <p class="text-xs text-slate-400 mt-1">Minimum 6 caractères</p>
+                </div>
+
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-medium text-slate-300 mb-2">
+                        Confirmer le nouveau mot de passe
+                    </label>
+                    <input type="password" id="confirmPassword" required minlength="6"
+                        class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-green-500 transition">
+                </div>
+
+                <div id="passwordError"
+                    class="hidden p-3 bg-red-900/50 border border-red-500 rounded-lg text-red-200 text-sm">
+                </div>
+
+                <div class="flex gap-3 pt-4">
+                    <button type="button" id="cancelPasswordChange"
+                        class="flex-1 bg-slate-700 hover:bg-slate-600 text-white font-medium py-3 rounded-lg transition">
+                        Annuler
+                    </button>
+                    <button type="submit"
+                        class="flex-1 bg-green-500 hover:bg-green-600 text-slate-900 font-bold py-3 rounded-lg transition">
+                        Confirmer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -504,25 +579,74 @@
             }
         }
 
-        // Change password
-        changePasswordButton.addEventListener('click', async () => {
-            const newPassword = prompt('Entrez votre nouveau mot de passe (minimum 6 caractères):');
-            if (!newPassword || newPassword.length < 6) {
-                alert('Le mot de passe doit contenir au moins 6 caractères');
+        // Password change modal
+        const passwordModal = document.getElementById('passwordModal');
+        const passwordChangeForm = document.getElementById('passwordChangeForm');
+        const cancelPasswordChange = document.getElementById('cancelPasswordChange');
+        const passwordError = document.getElementById('passwordError');
+
+        changePasswordButton.addEventListener('click', () => {
+            // Show modal
+            passwordModal.classList.remove('hidden');
+            setTimeout(() => passwordModal.classList.add('show'), 10);
+            // Reset form
+            passwordChangeForm.reset();
+            passwordError.classList.add('hidden');
+        });
+
+        cancelPasswordChange.addEventListener('click', () => {
+            closePasswordModal();
+        });
+
+        // Close modal on backdrop click
+        passwordModal.addEventListener('click', (e) => {
+            if (e.target === passwordModal) {
+                closePasswordModal();
+            }
+        });
+
+        function closePasswordModal() {
+            passwordModal.classList.remove('show');
+            setTimeout(() => passwordModal.classList.add('hidden'), 300);
+        }
+
+        passwordChangeForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            passwordError.classList.add('hidden');
+
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validate passwords match
+            if (newPassword !== confirmPassword) {
+                passwordError.textContent = 'Les mots de passe ne correspondent pas';
+                passwordError.classList.remove('hidden');
                 return;
             }
 
-            const currentPassword = prompt('Confirmez votre mot de passe actuel:');
-            if (!currentPassword) return;
+            // Validate password length
+            if (newPassword.length < 6) {
+                passwordError.textContent = 'Le mot de passe doit contenir au moins 6 caractères';
+                passwordError.classList.remove('hidden');
+                return;
+            }
 
             try {
                 const user = auth.currentUser;
                 const credential = EmailAuthProvider.credential(user.email, currentPassword);
                 await reauthenticateWithCredential(user, credential);
                 await updatePassword(user, newPassword);
+
+                closePasswordModal();
                 alert('Mot de passe modifié avec succès !');
             } catch (error) {
-                alert('Erreur: ' + error.message);
+                if (error.code === 'auth/wrong-password') {
+                    passwordError.textContent = 'Mot de passe actuel incorrect';
+                } else {
+                    passwordError.textContent = 'Erreur: ' + error.message;
+                }
+                passwordError.classList.remove('hidden');
             }
         });
 

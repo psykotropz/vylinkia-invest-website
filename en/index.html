@@ -2,6 +2,75 @@
 <html lang="en">
 
 <head>
+        <!-- Google Analytics 4 - Conditional Loading -->
+    <script>
+        // Cookie Consent Management
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            hideCookieBanner();
+            loadGoogleAnalytics();
+            window.location.reload();
+        }
+
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            hideCookieBanner();
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookieConsent');
+            if (banner) {
+                banner.classList.remove('show');
+                setTimeout(() => {
+                    banner.classList.add('hidden');
+                }, 400);
+            }
+        }
+
+        function showCookieBanner() {
+            const banner = document.getElementById('cookieConsent');
+            if (banner) {
+                banner.classList.remove('hidden');
+                setTimeout(() => {
+                    banner.classList.add('show');
+                }, 100);
+            }
+        }
+
+        // Check consent status on page load
+        const consent = localStorage.getItem('cookieConsent');
+        if (!consent) {
+            showCookieBanner();
+        }
+
+       
+        // Check if user has consented to cookies
+        function loadGoogleAnalytics() {
+            if (localStorage.getItem('cookieConsent') === 'accepted') {
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-CQFSK6D87P';
+                document.head.appendChild(script);
+
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-CQFSK6D87P', {
+                    'anonymize_ip': true,
+                    'cookie_flags': 'SameSite=None;Secure'
+                });
+            }
+        }
+        // Load GA4 if consent already given
+        loadGoogleAnalytics();
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-CQFSK6D87P');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vylinkia Invest - AI-Powered Savings</title>
@@ -43,11 +112,65 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+    
+        /* Cookie Consent Banner */
+        #cookieConsent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to right, #1e293b, #0f172a);
+            border-top: 2px solid #22c55e;
+            padding: 1.5rem;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            transform: translateY(100%);
+            transition: transform 0.4s ease-in-out;
+        }
+
+        #cookieConsent.show {
+            transform: translateY(0);
+        }
+
+        .cookie-buttons button {
+            transition: all 0.3s ease;
+        }
+
+        .cookie-buttons button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
     </style>
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
 </head>
 
 <body class="bg-slate-900 text-white">
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" class="hidden">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                    <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                    </svg>
+                    <h3 class="font-bold text-lg">🍪 Cookie Management</h3>
+                </div>
+                <p class="text-sm text-slate-300">
+                    We use cookies to improve your experience and analyze our traffic with Google Analytics. 
+                    <a href="privacy.html" class="text-green-400 hover:underline">Learn more</a>
+                </p>
+            </div>
+            <div class="cookie-buttons flex gap-3">
+                <button onclick="declineCookies()" class="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-medium">
+                    Decline
+                </button>
+                <button onclick="acceptCookies()" class="px-6 py-2 bg-green-500 hover:bg-green-600 text-slate-900 rounded-lg font-bold">
+                    Accept
+                </button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Navbar -->
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">

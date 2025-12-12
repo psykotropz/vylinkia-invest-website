@@ -24,19 +24,12 @@
         // Load GA4 if consent already given
         loadGoogleAnalytics();
     </script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-CQFSK6D87P');
-    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Compte - Vylinkia Invest</title>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Mon Profil - Vylinkia Invest</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -69,10 +62,24 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
         }
+
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(34, 197, 94, 0.2);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        }
     </style>
 </head>
 
-<body class="bg-slate-900 text-white min-h-screen flex flex-col">
+<body class="bg-slate-900 text-white">
+
     <!-- Cookie Consent Banner -->
     <div id="cookieConsent" class="hidden">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -104,9 +111,8 @@
         </div>
     </div>
 
-
     <!-- Navbar -->
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center border-b border-slate-800">
         <div class="flex items-center space-x-2">
             <a href="index.html" class="text-2xl font-bold tracking-tight">Vylinkia<span
                     class="text-green-400">Invest</span></a>
@@ -116,59 +122,247 @@
         </div>
     </nav>
 
-    <!-- Content -->
-    <div class="container mx-auto px-6 flex-grow flex items-center justify-center">
-        <div class="max-w-md w-full bg-slate-800 rounded-2xl p-8 border border-slate-700 shadow-xl" id="loginContainer">
-            <h1 class="text-2xl font-bold text-center mb-6">Mon Compte</h1>
-            <p class="text-slate-400 text-center mb-8">Connectez-vous pour gérer votre abonnement.</p>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="container mx-auto px-6 py-20 max-w-md">
+        <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700">
+            <h1 class="text-3xl font-bold mb-2 text-center">Mon Compte</h1>
+            <p class="text-slate-400 text-center mb-8">Connectez-vous pour accéder à votre profil</p>
 
-            <form id="loginForm" class="space-y-4">
+            <form id="loginForm" class="space-y-6">
                 <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                    <input type="email" id="email"
-                        class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-green-500 outline-none"
-                        required>
+                    <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                    <input type="email" id="email" name="email" required
+                        class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-green-500 transition">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-2">Mot de passe</label>
-                    <input type="password" id="password"
-                        class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-green-500 outline-none"
-                        required>
+                    <label for="password" class="block text-sm font-medium text-slate-300 mb-2">Mot de passe</label>
+                    <input type="password" id="password" name="password" required
+                        class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-green-500 transition">
                 </div>
                 <button type="submit"
-                    class="w-full bg-green-500 hover:bg-green-600 text-slate-900 font-bold py-3 rounded-xl transition">
+                    class="w-full bg-green-500 hover:bg-green-600 text-slate-900 font-bold py-4 rounded-xl transition">
                     Se connecter
                 </button>
             </form>
-            <div id="errorMessage" class="text-red-400 text-center mt-4 hidden"></div>
+
+            <div id="errorMessage"
+                class="mt-4 p-4 bg-red-900/50 border border-red-500 rounded-lg text-red-200 text-sm hidden">
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Screen -->
+    <div id="profileScreen" class="hidden container mx-auto px-6 py-12 max-w-6xl">
+        <!-- Profile Header -->
+        <div class="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 mb-8 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-32 -mt-32"></div>
+            <div class="relative z-10">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center text-4xl font-bold">
+                            <span id="userInitial">U</span>
+                        </div>
+                        <div>
+                            <h1 class="text-3xl font-bold mb-2" id="userEmail">user@example.com</h1>
+                            <div class="flex items-center gap-3">
+                                <span id="statusBadge" class="px-4 py-1 bg-white/20 rounded-full text-sm font-semibold">
+                                    Gratuit
+                                </span>
+                                <span class="text-white/80 text-sm">
+                                    Membre depuis <span id="memberSince">...</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="logoutButton" class="px-6 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition">
+                        Déconnexion
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <div class="max-w-md w-full bg-slate-800 rounded-2xl p-8 border border-slate-700 shadow-xl hidden"
-            id="portalContainer">
-            <h1 class="text-2xl font-bold text-center mb-6">Bonjour !</h1>
-            <p class="text-slate-400 text-center mb-8">Gérez votre abonnement, vos factures et vos moyens de paiement.
-            </p>
+        <!-- Stats Grid -->
+        <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="stat-card bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-3xl font-bold mb-1" id="totalAlerts">0</div>
+                <div class="text-slate-400 text-sm">Alertes reçues</div>
+            </div>
 
-            <button id="portalButton"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition flex items-center justify-center">
-                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
-                    </path>
-                </svg>
-                Ouvrir le Portail Client
-            </button>
-            <button id="logoutButton"
-                class="w-full bg-transparent border border-slate-600 text-slate-400 hover:text-white mt-4 py-3 rounded-xl transition">
-                Se déconnecter
-            </button>
+            <div class="stat-card bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-3xl font-bold mb-1" id="watchlistCount">0</div>
+                <div class="text-slate-400 text-sm">Dans ma Watchlist</div>
+            </div>
+
+            <div class="stat-card bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-3xl font-bold mb-1" id="activeSignals">0</div>
+                <div class="text-slate-400 text-sm">Signaux actifs</div>
+            </div>
+
+            <div class="stat-card bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-3xl font-bold mb-1" id="daysSinceMember">0</div>
+                <div class="text-slate-400 text-sm">Jours d'ancienneté</div>
+            </div>
+        </div>
+
+        <!-- Action Cards -->
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Account Management -->
+            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    Gestion du compte
+                </h2>
+
+                <div class="space-y-4">
+                    <button id="changePasswordButton"
+                        class="w-full bg-slate-700 hover:bg-slate-600 text-white font-medium py-3 px-4 rounded-lg transition flex items-center justify-between">
+                        <span>Changer le mot de passe</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+
+                    <div id="premiumSection">
+                        <button id="upgradeToPremiumButton"
+                            class="w-full gradient-bg text-white font-bold py-3 px-4 rounded-lg transition hover:shadow-lg flex items-center justify-between">
+                            <span>⭐ Passer à Premium</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="stripePortalSection" class="hidden">
+                        <button id="manageSubscriptionButton"
+                            class="w-full bg-slate-700 hover:bg-slate-600 text-white font-medium py-3 px-4 rounded-lg transition flex items-center justify-between">
+                            <span>Gérer mon abonnement</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium Benefits -->
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 border border-green-500/30">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                        </path>
+                    </svg>
+                    Avantages Premium
+                </h2>
+
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <div>
+                            <div class="font-semibold text-white">Signaux illimités</div>
+                            <div class="text-sm text-slate-400">Accès à tous les signaux d'achat et de vente</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <div>
+                            <div class="font-semibold text-white">Analyses détaillées</div>
+                            <div class="text-sm text-slate-400">Score de confiance, Stop Loss et Take Profit</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <div>
+                            <div class="font-semibold text-white">Notifications push</div>
+                            <div class="text-sm text-slate-400">Alertes en temps réel sur votre mobile</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <div>
+                            <div class="font-semibold text-white">Support prioritaire</div>
+                            <div class="text-sm text-slate-400">Réponse rapide à vos questions</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-green-400">3.99€</div>
+                            <div class="text-sm text-slate-400">par mois • 7 jours gratuits</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Scripts -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
         // Firebase Configuration for Tyto Invest
         const firebaseConfig = {
@@ -182,25 +376,30 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const API_URL = "https://tyto-production.up.railway.app"; // Update if needed
+        const API_URL = "https://tyto-production.up.railway.app";
 
+        const loginScreen = document.getElementById('loginScreen');
+        const profileScreen = document.getElementById('profileScreen');
         const loginForm = document.getElementById('loginForm');
-        const loginContainer = document.getElementById('loginContainer');
-        const portalContainer = document.getElementById('portalContainer');
-        const portalButton = document.getElementById('portalButton');
-        const logoutButton = document.getElementById('logoutButton');
         const errorMessage = document.getElementById('errorMessage');
+        const logoutButton = document.getElementById('logoutButton');
+        const changePasswordButton = document.getElementById('changePasswordButton');
+        const upgradeToPremiumButton = document.getElementById('upgradeToPremiumButton');
+        const manageSubscriptionButton = document.getElementById('manageSubscriptionButton');
 
-        onAuthStateChanged(auth, (user) => {
+        // Auth state observer
+        onAuthStateChanged(auth, async (user) => {
             if (user) {
-                loginContainer.classList.add('hidden');
-                portalContainer.classList.remove('hidden');
+                loginScreen.classList.add('hidden');
+                profileScreen.classList.remove('hidden');
+                await loadUserProfile(user);
             } else {
-                loginContainer.classList.remove('hidden');
-                portalContainer.classList.add('hidden');
+                loginScreen.classList.remove('hidden');
+                profileScreen.classList.add('hidden');
             }
         });
 
+        // Login
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             errorMessage.classList.add('hidden');
@@ -215,12 +414,130 @@
             }
         });
 
-        portalButton.addEventListener('click', async () => {
+        // Logout
+        logoutButton.addEventListener('click', async () => {
+            await signOut(auth);
+        });
+
+        // Load user profile
+        async function loadUserProfile(user) {
+            try {
+                const token = await user.getIdToken();
+
+                // Get user data from backend
+                const response = await fetch(`${API_URL}/users/me`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const userData = await response.json();
+                    updateProfileUI(userData);
+
+                    // Load stats
+                    await loadUserStats(token);
+                } else {
+                    console.error('Failed to load user data');
+                }
+            } catch (error) {
+                console.error('Error loading profile:', error);
+            }
+        }
+
+        // Update profile UI
+        function updateProfileUI(userData) {
+            const email = userData.email || 'user@example.com';
+            document.getElementById('userEmail').textContent = email;
+            document.getElementById('userInitial').textContent = email.charAt(0).toUpperCase();
+
+            // Status badge
+            const statusBadge = document.getElementById('statusBadge');
+            const premiumSection = document.getElementById('premiumSection');
+            const stripePortalSection = document.getElementById('stripePortalSection');
+
+            if (userData.is_premium) {
+                statusBadge.textContent = '⭐ Premium';
+                statusBadge.classList.add('bg-yellow-500/30', 'text-yellow-300');
+                premiumSection.classList.add('hidden');
+                stripePortalSection.classList.remove('hidden');
+            } else {
+                statusBadge.textContent = 'Gratuit';
+                statusBadge.classList.add('bg-white/20');
+                premiumSection.classList.remove('hidden');
+                stripePortalSection.classList.add('hidden');
+            }
+
+            // Member since
+            const createdAt = new Date(userData.created_at);
+            const memberSince = createdAt.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' });
+            document.getElementById('memberSince').textContent = memberSince;
+
+            // Days since member
+            const daysSince = Math.floor((new Date() - createdAt) / (1000 * 60 * 60 * 24));
+            document.getElementById('daysSinceMember').textContent = daysSince;
+        }
+
+        // Load user stats
+        async function loadUserStats(token) {
+            try {
+                // Get signals count
+                const signalsResponse = await fetch(`${API_URL}/signals/`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (signalsResponse.ok) {
+                    const signals = await signalsResponse.json();
+                    document.getElementById('totalAlerts').textContent = signals.length;
+                    document.getElementById('activeSignals').textContent = signals.length;
+                }
+
+                // Get watchlist count
+                const watchlistResponse = await fetch(`${API_URL}/watchlist/`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (watchlistResponse.ok) {
+                    const watchlist = await watchlistResponse.json();
+                    document.getElementById('watchlistCount').textContent = watchlist.length;
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        // Change password
+        changePasswordButton.addEventListener('click', async () => {
+            const newPassword = prompt('Entrez votre nouveau mot de passe (minimum 6 caractères):');
+            if (!newPassword || newPassword.length < 6) {
+                alert('Le mot de passe doit contenir au moins 6 caractères');
+                return;
+            }
+
+            const currentPassword = prompt('Confirmez votre mot de passe actuel:');
+            if (!currentPassword) return;
+
+            try {
+                const user = auth.currentUser;
+                const credential = EmailAuthProvider.credential(user.email, currentPassword);
+                await reauthenticateWithCredential(user, credential);
+                await updatePassword(user, newPassword);
+                alert('Mot de passe modifié avec succès !');
+            } catch (error) {
+                alert('Erreur: ' + error.message);
+            }
+        });
+
+        // Upgrade to premium
+        upgradeToPremiumButton.addEventListener('click', () => {
+            window.location.href = 'index.html#pricing';
+        });
+
+        // Manage subscription
+        manageSubscriptionButton.addEventListener('click', async () => {
             const user = auth.currentUser;
             if (!user) return;
 
-            portalButton.innerText = "Chargement...";
-            portalButton.disabled = true;
+            manageSubscriptionButton.innerText = "Chargement...";
+            manageSubscriptionButton.disabled = true;
 
             try {
                 const token = await user.getIdToken();
@@ -234,26 +551,62 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    if (data.portalUrl) {
-                        window.location.href = data.portalUrl;
-                    } else {
-                        throw new Error("Pas d'URL de portail reçue");
-                    }
+                    window.location.href = data.portalUrl;
                 } else {
                     const err = await response.json();
                     throw new Error(err.detail || "Erreur serveur");
                 }
             } catch (error) {
                 alert("Erreur: " + error.message);
-                portalButton.innerText = "Ouvrir le Portail Client";
-                portalButton.disabled = false;
+                manageSubscriptionButton.innerText = "Gérer mon abonnement";
+                manageSubscriptionButton.disabled = false;
             }
         });
 
-        logoutButton.addEventListener('click', () => {
-            signOut(auth);
-        });
+        // Cookie Consent Management
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            hideCookieBanner();
+            loadGoogleAnalytics();
+            window.location.reload();
+        }
+
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            hideCookieBanner();
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookieConsent');
+            if (banner) {
+                banner.classList.remove('show');
+                setTimeout(() => {
+                    banner.classList.add('hidden');
+                }, 400);
+            }
+        }
+
+        function showCookieBanner() {
+            const banner = document.getElementById('cookieConsent');
+            if (banner) {
+                banner.classList.remove('hidden');
+                setTimeout(() => {
+                    banner.classList.add('show');
+                }, 100);
+            }
+        }
+
+        // Check consent status on page load
+        const consent = localStorage.getItem('cookieConsent');
+        if (!consent) {
+            showCookieBanner();
+        }
+
+        // Make functions global
+        window.acceptCookies = acceptCookies;
+        window.declineCookies = declineCookies;
     </script>
+
 </body>
 
 </html>

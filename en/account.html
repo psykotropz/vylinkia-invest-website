@@ -151,7 +151,7 @@
     </nav>
 
     <!-- Login Screen -->
-    <div id="loginScreen" class="container mx-auto px-6 py-20 max-w-md">
+    <div id="loginScreen" class="container mx-auto px-6 py-10 md:py-20 max-w-md">
         <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700">
             <h1 class="text-3xl font-bold mb-2 text-center">My Account</h1>
             <p class="text-slate-400 text-center mb-8">Sign in to access your profile</p>
@@ -212,8 +212,8 @@
         <div class="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 mb-8 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-32 -mt-32"></div>
             <div class="relative z-10">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-6">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
                         <div
                             class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center text-4xl font-bold">
                             <span id="userInitial">U</span>
@@ -230,7 +230,8 @@
                             </div>
                         </div>
                     </div>
-                    <button id="logoutButton" class="px-6 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition">
+                    <button id="logoutButton"
+                        class="w-full md:w-auto px-6 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition">
                         Déconnexion
                     </button>
                 </div>

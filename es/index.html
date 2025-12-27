@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-        <!-- Google Analytics 4 - Conditional Loading -->
+    <!-- Google Analytics 4 - Conditional Loading -->
     <script>
         // Check if user has consented to cookies
         function loadGoogleAnalytics() {
@@ -71,7 +71,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-    
+
         /* Cookie Consent Banner */
         #cookieConsent {
             position: fixed;
@@ -110,20 +110,24 @@
             <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
                     <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+                        </path>
                     </svg>
                     <h3 class="font-bold text-lg">🍪 Gestión de cookies</h3>
                 </div>
                 <p class="text-sm text-slate-300">
-                    Utilizamos cookies para mejorar su experiencia y analizar nuestro tráfico con Google Analytics. 
+                    Utilizamos cookies para mejorar su experiencia y analizar nuestro tráfico con Google Analytics.
                     <a href="privacy.html" class="text-green-400 hover:underline">Más información</a>
                 </p>
             </div>
             <div class="cookie-buttons flex gap-3">
-                <button onclick="declineCookies()" class="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-medium">
+                <button onclick="declineCookies()"
+                    class="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-medium">
                     Rechazar
                 </button>
-                <button onclick="acceptCookies()" class="px-6 py-2 bg-green-500 hover:bg-green-600 text-slate-900 rounded-lg font-bold">
+                <button onclick="acceptCookies()"
+                    class="px-6 py-2 bg-green-500 hover:bg-green-600 text-slate-900 rounded-lg font-bold">
                     Aceptar
                 </button>
             </div>
@@ -152,17 +156,21 @@
                     title="Deutsch">🇩🇪</a>
                 <a href="../it/index.html" class="hover:scale-110 transition opacity-50 hover:opacity-100"
                     title="Italiano">🇮🇹</a>
-            </div>        </div>
+            </div>
+        </div>
         <div class="flex items-center gap-4">
-            <a href="../account.html" class="hidden md:flex items-center gap-2 text-slate-300 hover:text-green-400 transition" title="Mi Cuenta">
+            <a href="../account.html" class="flex items-center gap-2 text-slate-300 hover:text-green-400 transition"
+                title="Mi Cuenta">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
-                <span class="font-medium">Mi Cuenta</span>
+                <span class="font-medium hidden md:block">Mi Cuenta</span>
             </a>
-            <a href="#" class="bg-green-500 hover:bg-green-600 text-slate-900 font-bold py-2 px-6 rounded-full transition">
-            Descargar
-        </a>
+            <a href="#"
+                class="bg-green-500 hover:bg-green-600 text-slate-900 font-bold py-2 px-6 rounded-full transition">
+                Descargar
+            </a>
     </nav>
 
     <!-- Hero Section -->

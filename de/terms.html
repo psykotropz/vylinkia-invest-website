@@ -4,7 +4,7 @@
 <head>
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
     <link rel="apple-touch-icon" href="../assets/images/favicon.png">
-        <!-- Google Analytics 4 - Conditional Loading -->
+    <!-- Google Analytics 4 - Conditional Loading -->
     <script>
         // Check if user has consented to cookies
         function loadGoogleAnalytics() {
@@ -42,7 +42,7 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-    
+
         /* Cookie Consent Banner */
         #cookieConsent {
             position: fixed;
@@ -80,20 +80,25 @@
             <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
                     <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+                        </path>
                     </svg>
                     <h3 class="font-bold text-lg">🍪 Cookie-Verwaltung</h3>
                 </div>
                 <p class="text-sm text-slate-300">
-                    Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und unseren Traffic mit Google Analytics zu analysieren. 
+                    Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und unseren Traffic mit Google Analytics zu
+                    analysieren.
                     <a href="privacy.html" class="text-green-400 hover:underline">Mehr erfahren</a>
                 </p>
             </div>
             <div class="cookie-buttons flex gap-3">
-                <button onclick="declineCookies()" class="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-medium">
+                <button onclick="declineCookies()"
+                    class="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-medium">
                     Ablehnen
                 </button>
-                <button onclick="acceptCookies()" class="px-6 py-2 bg-green-500 hover:bg-green-600 text-slate-900 rounded-lg font-bold">
+                <button onclick="acceptCookies()"
+                    class="px-6 py-2 bg-green-500 hover:bg-green-600 text-slate-900 rounded-lg font-bold">
                     Akzeptieren
                 </button>
             </div>
@@ -148,7 +153,11 @@
             </section>
 
             <footer class="pt-8 mt-8 border-t border-slate-800 text-sm text-slate-500">
-                &copy; 2025 Vylinkia Invest. Alle Rechte vorbehalten.
+                <p class="mb-2">&copy; 2025 Vylinkia Invest. Alle Rechte vorbehalten.</p>
+                <p>
+                    Vylinkia Invest ist eine Marke von <a href="https://www.vylinkia-labs.com/"
+                        class="hover:text-white transition underline">Vylinkia Labs</a>
+                </p>
             </footer>
         </div>
     </main>

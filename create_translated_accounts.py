@@ -34,7 +34,7 @@ TRANSLATIONS = {
         'push_notifications_desc': 'Echtzeit-Benachrichtigungen auf Ihrem Handy',
         'priority_support': 'Prioritäts-Support',
         'priority_support_desc': 'Schnelle Antwort auf Ihre Fragen',
-        'price_per_month': 'pro Monat • 7 Tage kostenlos',
+        'price_per_month': 'pro Monat • Sofortige Zahlung',
         'password_modal_title': 'Passwort ändern',
         'current_password': 'Aktuelles Passwort',
         'new_password': 'Neues Passwort',
@@ -83,7 +83,7 @@ TRANSLATIONS = {
         'push_notifications_desc': 'Real-time alerts on your mobile',
         'priority_support': 'Priority Support',
         'priority_support_desc': 'Quick response to your questions',
-        'price_per_month': 'per month • 7 days free',
+        'price_per_month': 'per month • Immediate payment',
         'password_modal_title': 'Change Password',
         'current_password': 'Current Password',
         'new_password': 'New Password',
@@ -132,7 +132,7 @@ TRANSLATIONS = {
         'push_notifications_desc': 'Alertas en tiempo real en tu móvil',
         'priority_support': 'Soporte Prioritario',
         'priority_support_desc': 'Respuesta rápida a tus preguntas',
-        'price_per_month': 'por mes • 7 días gratis',
+        'price_per_month': 'por mes • Pago inmediato',
         'password_modal_title': 'Cambiar Contraseña',
         'current_password': 'Contraseña Actual',
         'new_password': 'Nueva Contraseña',
@@ -181,7 +181,7 @@ TRANSLATIONS = {
         'push_notifications_desc': 'Avvisi in tempo reale sul tuo cellulare',
         'priority_support': 'Supporto Prioritario',
         'priority_support_desc': 'Risposta rapida alle tue domande',
-        'price_per_month': 'al mese • 7 giorni gratis',
+        'price_per_month': 'al mese • Pagamento immediato',
         'password_modal_title': 'Cambia Password',
         'current_password': 'Password Attuale',
         'new_password': 'Nuova Password',
@@ -244,7 +244,7 @@ def translate_account_page(lang_code, translations):
     content = content.replace('Alertes en temps réel sur votre mobile', translations['push_notifications_desc'])
     content = content.replace('Support prioritaire', translations['priority_support'])
     content = content.replace('Réponse rapide à vos questions', translations['priority_support_desc'])
-    content = content.replace('par mois • 7 jours gratuits', translations['price_per_month'])
+    content = content.replace('par mois • Paiement immédiat', translations['price_per_month'])
     content = content.replace('<h2 class="text-2xl font-bold mb-6">Changer le mot de passe</h2>',
                             f'<h2 class="text-2xl font-bold mb-6">{translations["password_modal_title"]}</h2>')
     content = content.replace('Mot de passe actuel', translations['current_password'])

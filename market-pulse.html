@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Google Analytics 4 - Conditional Loading -->
+    <script>
+        // Check if user has consented to cookies
+        function loadGoogleAnalytics() {
+            if (localStorage.getItem('cookieConsent') === 'accepted') {
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-CQFSK6D87P';
+                document.head.appendChild(script);
+
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-CQFSK6D87P', {
+                    'anonymize_ip': true,
+                    'cookie_flags': 'SameSite=None;Secure'
+                });
+            }
+        }
+        // Load GA4 if consent already given
+        loadGoogleAnalytics();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment fonctionne le Market Pulse ? - Transparence Vylinkia</title>
+    <meta name="description"
+        content="Découvrez comment notre algorithme 'Market Pulse' analyse 13 indicateurs macro-économiques en temps réel pour décider du régime de marché (Risk-On/Off). Pas de magie, que des maths.">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #4ade80, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+
+    <!-- Navbar -->
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-2">
+            <span class="text-2xl font-bold tracking-tight">Vylinkia<span class="text-green-400">Invest</span></span>
+        </a>
+        <div class="hidden md:flex space-x-8 items-center">
+            <a href="index.html#features" class="hover:text-green-400 transition">Fonctionnalités</a>
+            <a href="index.html#pricing" class="hover:text-green-400 transition">Tarifs</a>
+            <a href="index.html#contact" class="hover:text-green-400 transition">Contact</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="https://play.google.com/store/apps/details?id=com.vylinkiainvest.mobile" target="_blank"
+                class="bg-green-500 hover:bg-green-600 text-slate-900 font-bold py-2 px-6 rounded-full transition">
+                Télécharger l'App
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="container mx-auto px-6 py-16 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+            Ce n'est pas de la magie.<br>
+            C'est du <span class="gradient-text">Traitement de Données</span>.
+        </h1>
+        <p class="text-xl text-slate-400 mb-8 max-w-3xl mx-auto">
+            Le "Market Pulse" n'est pas une intuition. C'est un algorithme déterministe qui scanne
+            <strong>13 paniers d'actifs</strong> en temps réel pour décider si le feu est Vert (Acheter) ou Rouge
+            (Protéger).
+        </p>
+    </header>
+
+    <!-- The 13 Indicators -->
+    <section class="py-12 bg-slate-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">1. Les Capteurs (Input)</h2>
+            <p class="text-center text-slate-400 mb-12 max-w-2xl mx-auto">
+                Notre algorithme ne regarde pas que le S&P 500. Il surveille la santé globale de l'économie à travers 13
+                secteurs clés sur une fenêtre de 7 jours.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Risk On Group -->
+                <div class="bg-slate-700 p-6 rounded-xl border-l-4 border-green-500">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">⚠️ Actifs "Risque"</h3>
+                    <ul class="space-y-2 text-slate-300">
+                        <li>💻 <strong>Tech (S&P/Nasdaq)</strong> : Le moteur de la croissance.</li>
+                        <li>₿ <strong>Crypto</strong> (BTC/ETH) : L'appétit spéculatif pur.</li>
+                        <li>🏦 <strong>Finance</strong> : La santé bancaire (Taux d'intérêt).</li>
+                        <li>🛢️ <strong>Énergie</strong> : L'activité industrielle réelle.</li>
+                        <li>🌏 <strong>Marchés Émergents</strong> : La croissance mondiale hors US.</li>
+                    </ul>
+                </div>
+
+                <!-- Risk Off Group -->
+                <div class="bg-slate-700 p-6 rounded-xl border-l-4 border-red-500">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">🛡️ Actifs "Refuge"</h3>
+                    <ul class="space-y-2 text-slate-300">
+                        <li>💎 <strong>Or & Métaux</strong> : La protection contre l'inflation.</li>
+                        <li>📜 <strong>Obligations (Bonds)</strong> : La fuite vers la sécurité (TLT).</li>
+                        <li>📉 <strong>Volatilité (VIX)</strong> : L'indice de la peur.</li>
+                    </ul>
+                </div>
+
+                <!-- Global Indicators Group -->
+                <div class="bg-slate-700 p-6 rounded-xl border-l-4 border-blue-500">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">🌍 Contexte Global</h3>
+                    <ul class="space-y-2 text-slate-300">
+                        <li>💶 <strong>Euro / Dollar</strong> : Impact de change sur vos gains.</li>
+                        <li>🇪🇺 <strong>Indices Europe</strong> : La santé de la zone Euro.</li>
+                        <li>🇨🇳 <strong>Asie / Chine</strong> : Indicateur avancé pour le Luxe.</li>
+                        <li>🛢️ <strong>Brent Crude</strong> : Référence pétrole Europe.</li>
+                        <li>🎈 <strong>Market Breadth</strong> : Participation (Tout monte ou seulement les géants ?).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Logic -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">2. La Logique (Algorithme)</h2>
+            <div class="max-w-4xl mx-auto space-y-12">
+
+                <!-- Step 1: Weighted Score -->
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/3 text-center">
+                        <div
+                            class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-slate-800 text-4xl border-4 border-indigo-500 font-bold text-indigo-400">
+                            ∑
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold mb-4">Le Score de Sentiment Pondéré</h3>
+                        <p class="text-slate-400 mb-4">
+                            L'IA calcule d'abord un score brut basé sur la performance (7 jours) de chaque secteur.
+                        </p>
+                        <div class="bg-slate-800 p-4 rounded-lg font-mono text-sm text-green-400">
+                            Score = (Tech * 1.0) + (Crypto * 1.0) + (Finance * 0.5) <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- (Refuge * 1.0) - (Volatilité * 0.5)
+                        </div>
+                        <p class="text-slate-500 mt-2 text-sm">
+                            Si le score est > 5, c'est généralement bon signe. Si < -5, attention. </p>
+                    </div>
+                </div>
+
+                <!-- Step 2: Decision Tree -->
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/3 text-center order-first md:order-last">
+                        <div
+                            class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-slate-800 text-4xl border-4 border-yellow-500">
+                            ⚡
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold mb-4">Les "Smart Alerts" (Exceptions Prioritaires)</h3>
+                        <p class="text-slate-400 mb-4">
+                            Avant d'écouter le score, l'algorithme vérifie des scénarios critiques qui annulent tout le
+                            reste. C'est notre filet de sécurité.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="bg-red-500/20 text-red-400 p-1 rounded">🎈 Bulle</span>
+                                <span class="text-slate-300">Si la Tech monte fort (>2%) mais que le reste de l'économie
+                                    baisse. = <strong>Danger</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="bg-blue-500/20 text-blue-400 p-1 rounded">💨 Devise</span>
+                                <span class="text-slate-300">Si le marché US monte mais que le Dollar s'effondre face à
+                                    l'Euro. = <strong>Gains annulés pour vous</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="bg-purple-500/20 text-purple-400 p-1 rounded">🇨🇳 Luxe</span>
+                                <span class="text-slate-300">Si l'Asie décroche brutalement. = <strong>Alerte sur
+                                        LVMH/Kering</strong>.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-slate-800 border-t border-slate-700">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl font-bold text-center mb-12">Transparence Totale</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Est-ce un "Trading Bot" automatisé ?</h3>
+                    <p class="text-slate-400">
+                        <strong>Non.</strong> Vylinkia est un outil d'aide à la décision. L'IA fait le travail d'analyse
+                        (qui prendrait 4h par jour à un humain) en millisecondes, mais c'est <strong>vous</strong> qui
+                        validez et passez l'ordre. Nous ne gérons pas votre argent.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-2">D'où viennent les données ?</h3>
+                    <p class="text-slate-400">
+                        Nous utilisons des flux de données boursières professionnels (Twelve Data & Yahoo Finance APIs)
+                        agrégés en temps réel. Nos serveurs aux Pays-Bas recalculent le Market Pulse toutes les 4
+                        heures.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Pourquoi "7 jours" ?</h3>
+                    <p class="text-slate-400">
+                        Nous sommes spécialisés dans le <strong>Swing Trading</strong>. La tendance hebdomadaire est la
+                        plus pertinente pour filtrer le "bruit" quotidien tout en étant assez réactif pour ne pas rater
+                        les opportunités.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="https://play.google.com/store/apps/details?id=com.vylinkiainvest.mobile" target="_blank"
+                    class="inline-flex items-center gap-2 bg-gradient-to-r from-green-400 to-blue-500 text-slate-900 font-bold py-4 px-10 rounded-full hover:scale-105 transition transform text-lg shadow-lg">
+                    Télécharger l'Assistant
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-12">
+        <div class="container mx-auto px-6 text-center text-slate-500">
+            <p class="mb-4 text-sm">
+                <a href="index.html" class="hover:text-white transition">← Retour à l'accueil</a>
+            </p>
+            <p class="mb-2">&copy; 2025 Vylinkia Invest. Tous droits réservés.</p>
+            <div class="space-x-4 text-sm">
+                <a href="privacy.html" class="hover:text-white transition">Politique de Confidentialité</a>
+                <a href="terms.html" class="hover:text-white transition">Conditions d'Utilisation</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

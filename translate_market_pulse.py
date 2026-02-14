@@ -22,9 +22,10 @@ translations = {
         'sec2_title': '2. The Logic (Algorithm)',
         'step1_title': 'The Weighted Sentiment Score',
         'step1_desc': 'The AI first calculates a raw score based on the performance (7 days) of each sector.',
+        'step1_weight_note': '*Why Tech & Crypto have higher weights? They are "leading" indicators that often react before the real economy.',
         'step1_sub': 'If score > 5, usually good. If < -5, caution.',
-        'step2_title': 'The "Smart Alerts" (Priority Exceptions)',
-        'step2_desc': 'Before listening to the score, the algorithm checks critical scenarios that override everything else.\n                            It is our safety net.',
+        'step2_title': 'The "Smart Alerts" (Real-Time Circuit Breakers)',
+        'step2_desc': 'Before listening to the score (7-day trend), the algorithm checks <strong>in real-time</strong> for critical scenarios that override everything else. These "circuit breakers" act instantly to protect your capital, even if the weekly trend still looks positive.',
         'alert_bubble': '🎈 Bubble',
         'alert_bubble_desc': 'If Tech is up big (>2%) but the rest of economy is down. = <strong>Danger</strong>.',
         'alert_forex': '💨 Forex',
@@ -33,9 +34,9 @@ translations = {
         'alert_luxury_desc': 'If Asia crashes hard. = <strong>Alert on LVMH/Kering</strong>.',
         'faq_title': 'Total Transparency',
         'q1': 'Is it an automated "Trading Bot"?',
-        'a1': '<strong>No.</strong> Vylinkia is a decision support tool. The AI does the analysis work\n                        (which would take a human 4 hours/day) in milliseconds, but <strong>you</strong>\n                        validate and place the order. We do not manage your money.',
+        'a1': '<strong>No.</strong> Vylinkia is a decision support tool. The AI does the analysis work\n                        (which would take a human 4 hours/day) in milliseconds, but <strong>you</strong>\n                        validate and place the order. We do not manage your money. It is this precise filter that helped avoid recent crashes in our backtests (+27.4% annual performance).',
         'q2': 'Where does the data come from?',
-        'a2': 'We use professional stock market data feeds (Twelve Data & Yahoo Finance APIs)\n                        aggregated in real-time. Our servers in the Netherlands recalculate the Market Pulse every 4\n                        hours.',
+        'a2': 'We aggregate institutional-quality data feeds (via Twelve Data & Yahoo Finance).\n                        Although we do not use Bloomberg terminals (too costly for retail), our algorithmic processing\n                        cleans and validates this data continuously to ensure maximum reliability.',
         'q3': 'Why "7 days"?',
         'a3': 'We specialize in <strong>Swing Trading</strong>. The weekly trend is the most relevant\n                        to filter out daily "noise" while being reactive enough not to miss\n                        opportunities.',
         'cta_btn': 'Download Assistant',
@@ -63,9 +64,10 @@ translations = {
         'sec2_title': '2. La Lógica (Algoritmo)',
         'step1_title': 'Puntaje de Sentimiento Ponderado',
         'step1_desc': 'La IA calcula primero un puntaje bruto basado en el rendimiento (7 días) de cada sector.',
+        'step1_weight_note': '*¿Por qué Tech & Crypto pesan más? Son indicadores "adelantados" que a menudo reaccionan antes que la economía real.',
         'step1_sub': 'Si score > 5, generalmente bueno. Si < -5, precaución.',
-        'step2_title': 'Las "Smart Alerts" (Excepciones Prioritarias)',
-        'step2_desc': 'Antes de escuchar el puntaje, el algoritmo verifica escenarios críticos que anulan todo lo demás.\n                            Es nuestra red de seguridad.',
+        'step2_title': 'Las "Smart Alerts" (Interruptores en Tiempo Real)',
+        'step2_desc': 'Antes de escuchar al puntaje (tendencia de 7 días), el algoritmo verifica <strong>en tiempo real</strong> escenarios críticos que anulan todo lo demás. Estos "interruptores" actúan instantáneamente para proteger tu capital, incluso si la tendencia semanal parece positiva.',
         'alert_bubble': '🎈 Burbuja',
         'alert_bubble_desc': 'Si Tech sube mucho (>2%) pero el resto baja. = <strong>Peligro</strong>.',
         'alert_forex': '💨 Divisa',
@@ -74,9 +76,9 @@ translations = {
         'alert_luxury_desc': 'Si Asia cae fuerte. = <strong>Alerta sobre LVMH/Kering</strong>.',
         'faq_title': 'Transparencia Total',
         'q1': '¿Es un "Bot de Trading" automatizado?',
-        'a1': '<strong>No.</strong> Vylinkia es una herramienta de apoyo a la decisión. La IA hace el trabajo de análisis\n                        (que tomaría 4h/día a un humano) en milisegundos, pero <strong>tú</strong>\n                        validas y colocas la orden. No gestionamos tu dinero.',
+        'a1': '<strong>No.</strong> Vylinkia es una herramienta de apoyo a la decisión. La IA hace el trabajo de análisis\n                        (que tomaría 4h/día a un humano) en milisegundos, pero <strong>tú</strong>\n                        validas y colocas la orden. No gestionamos tu dinero. Es este filtro preciso el que ayudó a evitar caídas recientes en nuestros backtests (+27.4% de rendimiento anual).',
         'q2': '¿De dónde vienen los datos?',
-        'a2': 'Usamos feeds de datos bursátiles profesionales (APIs Twelve Data & Yahoo Finance)\n                        agregados en tiempo real. Nuestros servidores en Países Bajos recalculan el Market Pulse cada 4\n                        horas.',
+        'a2': 'Agregamos feeds de datos de calidad institucional (vía Twelve Data & Yahoo Finance).\n                        Aunque no utilizamos terminales Bloomberg (demasiado costosos para retail), nuestro procesamiento algorítmico\n                        limpia y valida estos datos continuamente para asegurar la máxima fiabilidad.',
         'q3': '¿Por qué "7 días"?',
         'a3': 'Nos especializamos en <strong>Swing Trading</strong>. La tendencia semanal es la más relevante\n                        para filtrar el "ruido" diario siendo lo suficientemente reactiva para no perder\n                        oportunidades.',
         'cta_btn': 'Descargar Asistente',
@@ -104,9 +106,10 @@ translations = {
         'sec2_title': '2. Die Logik (Algorithmus)',
         'step1_title': 'Der gewichtete Stimmungs-Score',
         'step1_desc': 'Die KI berechnet zunächst einen Roh-Score basierend auf der Leistung (7 Tage) jedes Sektors.',
+        'step1_weight_note': '*Warum haben Tech & Crypto höhere Gewichtungen? Sie sind "Frühindikatoren", die oft reagieren, bevor die Realwirtschaft es tut.',
         'step1_sub': 'Wenn Score > 5, meistens gut. Wenn < -5, Vorsicht.',
-        'step2_title': 'Die "Smart Alerts" (Prioritätsausnahmen)',
-        'step2_desc': 'Bevor er auf den Score hört, prüft der Algorithmus kritische Szenarien, die alles andere annullieren.\n                            Das ist unser Sicherheitsnetz.',
+        'step2_title': 'Die "Smart Alerts" (Echtzeit-Schutzschalter)',
+        'step2_desc': 'Bevor er auf den Score (7-Tage-Trend) hört, prüft der Algorithmus <strong>in Echtzeit</strong> auf kritische Szenarien, die alles andere annullieren. Diese "Schutzschalter" wirken sofort, um Ihr Kapital zu schützen, auch wenn der wöchentliche Trend noch positiv aussieht.',
         'alert_bubble': '🎈 Blase',
         'alert_bubble_desc': 'Wenn Tech stark steigt (>2%), aber der Rest fällt. = <strong>Gefahr</strong>.',
         'alert_forex': '💨 Währung',
@@ -115,9 +118,9 @@ translations = {
         'alert_luxury_desc': 'Wenn Asien hart abstürzt. = <strong>Alarm für LVMH/Kering</strong>.',
         'faq_title': 'Totale Transparenz',
         'q1': 'Ist es ein automatisierter "Trading Bot"?',
-        'a1': '<strong>Nein.</strong> Vylinkia ist ein Entscheidungshilfetool. Die KI erledigt die Analysearbeit\n                        (die einen Menschen 4 Stunden/Tag kosten würde) in Millisekunden, aber <strong>Sie</strong>\n                        validieren und platzieren die Order. Wir verwalten Ihr Geld nicht.',
+        'a1': '<strong>Nein.</strong> Vylinkia ist ein Entscheidungshilfetool. Die KI erledigt die Analysearbeit\n                        (die einen Menschen 4 Stunden/Tag kosten würde) in Millisekunden, aber <strong>Sie</strong>\n                        validieren und platzieren die Order. Wir verwalten Ihr Geld nicht. Es ist genau dieser Filter, der geholfen hat, jüngste Abstürze in unseren Backtests zu vermeiden (+27,4% jährliche Performance).',
         'q2': 'Woher kommen die Daten?',
-        'a2': 'Wir nutzen professionelle Börsendaten-Feeds (Twelve Data & Yahoo Finance APIs)\n                        in Echtzeit aggregiert. Unsere Server in den Niederlanden berechnen den Market Pulse alle 4\n                        Stunden neu.',
+        'a2': 'Wir aggregieren Datenfeeds von institutioneller Qualität (via Twelve Data & Yahoo Finance).\n                        Obwohl wir keine Bloomberg-Terminals verwenden (zu teuer für Privatanleger), reinigt und validiert\n                        unsere algorithmische Verarbeitung diese Daten kontinuierlich, um maximale Zuverlässigkeit zu gewährleisten.',
         'q3': 'Warum "7 Tage"?',
         'a3': 'Wir sind auf <strong>Swing Trading</strong> spezialisiert. Der wöchentliche Trend ist am relevantesten,\n                        um das tägliche "Rauschen" zu filtern, während man reaktiv genug bleibt, um Chancen nicht zu\n                        verpassen.',
         'cta_btn': 'Assistent herunterladen',
@@ -145,9 +148,10 @@ translations = {
         'sec2_title': '2. La Logica (Algoritmo)',
         'step1_title': 'Il Punteggio di Sentimento Ponderato',
         'step1_desc': 'L\'IA calcola prima un punteggio grezzo basato sulla performance (7 giorni) di ogni settore.',
+        'step1_weight_note': '*Perché Tech & Crypto hanno pesi maggiori? Sono indicatori "anticipatori" che spesso reagiscono prima dell\'economia reale.',
         'step1_sub': 'Se score > 5, generalmente buono. Se < -5, attenzione.',
-        'step2_title': 'Gli "Smart Alerts" (Eccezioni Prioritarie)',
-        'step2_desc': 'Prima di ascoltare il punteggio, l\'algoritmo verifica scenari critici che annullano tutto il resto.\n                            È la nostra rete di sicurezza.',
+        'step2_title': 'Gli "Smart Alerts" (Interruttori in Tempo Reale)',
+        'step2_desc': 'Prima di ascoltare il punteggio (trend di 7 giorni), l\'algoritmo verifica <strong>in tempo reale</strong> scenari critici che annullano tutto il resto. Questi "interruttori" agiscono istantaneamente per proteggere il tuo capitale, anche se il trend settimanale sembra ancora positivo.',
         'alert_bubble': '🎈 Bolla',
         'alert_bubble_desc': 'Se il Tech sale forte (>2%) ma il resto scende. = <strong>Pericolo</strong>.',
         'alert_forex': '💨 Valuta',
@@ -156,9 +160,9 @@ translations = {
         'alert_luxury_desc': 'Se l\'Asia crolla duramente. = <strong>Allerta su LVMH/Kering</strong>.',
         'faq_title': 'Trasparenza Totale',
         'q1': 'È un "Trading Bot" automatizzato?',
-        'a1': '<strong>No.</strong> Vylinkia è uno strumento di supporto decisionale. L\'IA fa il lavoro di analisi\n                        (che richiederebbe 4h al giorno a un umano) in millisecondi, ma <strong>tu</strong>\n                        validi e inserisci l\'ordine. Non gestiamo i tuoi soldi.',
+        'a1': '<strong>No.</strong> Vylinkia è uno strumento di supporto decisionale. L\'IA fa il lavoro di analisi\n                        (che richiederebbe 4h al giorno a un umano) in millisecondi, ma <strong>tu</strong>\n                        validi e inserisci l\'ordine. Non gestiamo i tuoi soldi. È proprio questo filtro che ha permesso di evitare i recenti crolli nei nostri backtest (+27.4% di performance annuale).',
         'q2': 'Da dove vengono i dati?',
-        'a2': 'Usiamo feed di dati borsistici professionali (API Twelve Data & Yahoo Finance)\n                        aggregati in tempo reale. I nostri server nei Paesi Bassi ricalcolano il Market Pulse ogni 4\n                        ore.',
+        'a2': 'Aggreghiamo feed di dati di qualità istituzionale (via Twelve Data & Yahoo Finance).\n                        Sebbene non utilizziamo terminali Bloomberg (troppo costosi per il retail), la nostra elaborazione algoritmica\n                        pulisce e convalida questi dati continuamente per garantire la massima affidabilità.',
         'q3': 'Perché "7 giorni"?',
         'a3': 'Siamo specializzati nello <strong>Swing Trading</strong>. Il trend settimanale è il più rilevante\n                        per filtrare il "rumore" quotidiano rimanendo abbastanza reattivi per non perdere\n                        opportunità.',
         'cta_btn': 'Scarica Assistente',
@@ -183,6 +187,7 @@ def generate_file(lang_code, lang_data):
     # Simple Replacements
     content = content.replace('lang="fr"', f'lang="{lang_code}"')
     content = content.replace('Comment fonctionne le Market Pulse ? - Transparence Vylinkia', lang_data['title'])
+    
     content = re.sub(r'<meta name="description"[^>]*>', f'<meta name="description" content="{lang_data["desc_meta"]}">', content)
     
     # Nav
@@ -193,7 +198,7 @@ def generate_file(lang_code, lang_data):
     
     # STRICT Multi-line Replacements (Must match source file exactly)
     
-    # Hero
+    # Hero (UNCHANGED)
     content = content.replace('''Ce n'est pas de la magie.<br>
             C'est du <span class="gradient-text">Traitement de Données</span>.''', lang_data['hero_title'])
             
@@ -201,7 +206,7 @@ def generate_file(lang_code, lang_data):
             <strong>13 paniers d'actifs</strong> en temps réel pour décider si le feu est Vert (Acheter) ou Rouge
             (Protéger).''', lang_data['hero_desc'])
             
-    # Section 1
+    # Section 1 (UNCHANGED)
     content = content.replace('1. Les Capteurs (Input)', lang_data['sec1_title'])
     
     content = content.replace('''Notre algorithme ne regarde pas que le S&P 500. Il surveille la santé globale de l'économie à travers 13
@@ -230,22 +235,23 @@ def generate_file(lang_code, lang_data):
     for fr, key in items_map:
         if key in lang_data:
             content = content.replace(fr, lang_data[key])
-        else:
-            # Fallback for items I didn't add to map above but are in lang_data (e.g. items)
-            pass
 
-    # Section 2
+    # Section 2 (UPDATED)
     content = content.replace('2. La Logique (Algorithme)', lang_data['sec2_title'])
     content = content.replace('Le Score de Sentiment Pondéré', lang_data['step1_title'])
     
     content = content.replace("L'IA calcule d'abord un score brut basé sur la performance (7 jours) de chaque secteur.", lang_data['step1_desc'])
     
     content = content.replace("Si le score est > 5, c'est généralement bon signe. Si < -5, attention.", lang_data['step1_sub'])
+    content = content.replace('*Pourquoi Tech & Crypto pèsent plus lourd ? Ce sont des indicateurs "avancés" qui réagissent souvent avant l\'économie réelle.', lang_data['step1_weight_note'])
     
-    content = content.replace('Les "Smart Alerts" (Exceptions Prioritaires)', lang_data['step2_title'])
     
-    content = content.replace('''Avant d'écouter le score, l'algorithme vérifie des scénarios critiques qui annulent tout le
-                            reste. C'est notre filet de sécurité.''', lang_data['step2_desc'])
+    content = content.replace('Les "Smart Alerts" (Disjoncteurs Temps Réel)', lang_data['step2_title'])
+    
+    # Warning: The source has HTML entities or specific formatting. Need to be careful.
+    # Source: Avant d'écouter le score (tendance 7 jours), l'algorithme vérifie <strong>en temps réel</strong> des scénarios critiques qui annulent tout le reste. Ces "disjoncteurs" agissent instantanément pour protéger votre capital, même si la tendance hebdomadaire semble encore positive.
+    
+    content = content.replace('''Avant d'écouter le score (tendance 7 jours), l'algorithme vérifie <strong>en temps réel</strong> des scénarios critiques qui annulent tout le reste. Ces "disjoncteurs" agissent instantanément pour protéger votre capital, même si la tendance hebdomadaire semble encore positive.''', lang_data['step2_desc'])
     
     # Alerts
     content = content.replace('<span class="bg-red-500/20 text-red-400 p-1 rounded">🎈 Bulle</span>', f'<span class="bg-red-500/20 text-red-400 p-1 rounded">{lang_data["alert_bubble"]}</span>')
@@ -260,18 +266,20 @@ def generate_file(lang_code, lang_data):
     content = content.replace('''Si l'Asie décroche brutalement. = <strong>Alerte sur
                                         LVMH/Kering</strong>.''', lang_data['alert_luxury_desc'])
     
-    # FAQ
+    # FAQ (UPDATED)
     content = content.replace('Transparence Totale', lang_data['faq_title'])
     
     content = content.replace('Est-ce un "Trading Bot" automatisé ?', lang_data['q1'])
+    # Updated Answer 1
     content = content.replace('''<strong>Non.</strong> Vylinkia est un outil d'aide à la décision. L'IA fait le travail d'analyse
                         (qui prendrait 4h par jour à un humain) en millisecondes, mais c'est <strong>vous</strong> qui
-                        validez et passez l'ordre. Nous ne gérons pas votre argent.''', lang_data['a1'])
+                        validez et passez l'ordre. Nous ne gérons pas votre argent. C'est ce filtre précis qui a permis d'éviter les krachs récents dans nos backtests (+27.4% de performance annuelle).''', lang_data['a1'])
     
     content = content.replace("D'où viennent les données ?", lang_data['q2'])
-    content = content.replace('''Nous utilisons des flux de données boursières professionnels (Twelve Data & Yahoo Finance APIs)
-                        agrégés en temps réel. Nos serveurs aux Pays-Bas recalculent le Market Pulse toutes les 4
-                        heures.''', lang_data['a2'])
+    # Updated Answer 2
+    content = content.replace('''Nous agrégeons des flux de données de qualité institutionnelle (via Twelve Data & Yahoo Finance). 
+                        Bien que nous n'utilisions pas de terminaux Bloomberg (trop coûteux pour le retail), notre traitement algorithmique 
+                        nettoie et valide ces données en continu pour assurer une fiabilité maximale.''', lang_data['a2'])
     
     content = content.replace('Pourquoi "7 jours" ?', lang_data['q3'])
     content = content.replace('''Nous sommes spécialisés dans le <strong>Swing Trading</strong>. La tendance hebdomadaire est la
@@ -314,4 +322,4 @@ for lang_code, data in translations.items():
     except Exception as e:
         print(f"Error generating {lang_code}: {e}")
 
-print("Done (v2).")
+print("Done (v3 - Refined).")
